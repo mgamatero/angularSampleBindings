@@ -1,0 +1,64 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<ul>
+  <li>
+    <h2 [ngStyle]="{'color': 'blue'}">2 way Data Binding[(ngModel)]</h2>
+    <hr>
+    <p>
+      Via string interpolation ====> {{ dualBind }}
+    </p>
+    <input [(ngModel)]="dualBind">
+    <ol>
+      <li>needs to import FormsModule in app.module.ts</li>
+      <li>[(ngModel)] = "binding"</li>
+    </ol>
+  </li>
+
+
+  <li>
+    <h2 [ngStyle]="{'color': 'blue'}">Custom Property Binding</h2>
+    <hr>
+    <app-daddy> </app-daddy>
+    <ol>
+      <li>
+        Property is defined in Parent, to be used in Child (Daddy/Anak)
+      </li>
+      <li>
+        @Input () decorator needed
+      </li>
+      <li>
+        @Input () goes in the Anak
+      </li>
+      <li>
+        Dad.html got the [anakFromDad] property. Used by Anak as "anakFromDad"
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <h2 [ngStyle]="{'color': 'blue'}">Event Property Binding</h2>
+    <hr>
+    <app-daddy (onYell)="yell($event)"> </app-daddy>
+    <ol>
+      <li>
+        Property is defined in Child, to be used in Parent (Daddy/Anak)
+      </li>
+      <li>
+        @Output () decorator needed
+      </li>
+      <li>
+        in parent.html app-home (onYell)='yell($event)'
+      </li>
+      <li>
+        onYell is an event from the child, defined at ts only, not html....yell($event) defined at parent
+      </li>
+      <li>
+        in child.html....(click)=>genericClick...then genericClick()=>this.onYell.emit(e)
+      </li>
+    </ol>
+  </li>
+</ul>
